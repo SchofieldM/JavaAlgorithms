@@ -3,15 +3,6 @@ package main.com.algorithms.primenumbers;
 public class PrimeGenerator {
 
 /**
- * Creates an object to allow for method calls
- * Though static could be used I used a class to in the future add additional features
- */
-public PrimeGenerator()
-{
-
-}
-
-/**
  * Creates an array of longs of ordered primes
  * 
  * numberOfPrimes = 3:
@@ -24,7 +15,7 @@ public PrimeGenerator()
  * @param numberOfPrimes, number of primes to have in the array, the length of the array
  * @return an ordered array of prime numbers of specified length
  */
-public long[] generateLongArray(int numberOfPrimes)
+public static long[] generateLongArray(int numberOfPrimes)
 {
 	// To handle how many primes we have created and where in the array to put the next one
 	int iter = 0;
