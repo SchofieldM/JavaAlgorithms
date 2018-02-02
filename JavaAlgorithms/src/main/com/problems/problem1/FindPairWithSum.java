@@ -1,5 +1,8 @@
 package main.com.problems.problem1;
 
+import main.com.algorithms.search.BubbleSort;
+import main.com.algorithms.search.QuickSort;
+
 /**
  * Finds a pair or pairs within an unsorted integer array that add up
  * to a given sum
@@ -26,10 +29,10 @@ public class FindPairWithSum {
 	 * @return an int[] of the indices of the 'first' pair that sums
 	 * 		to the given sum.
 	 */
-	public static int[] bruteForce(int[] unsortedIntArray, int sum)
+	public static int[] bruteForceFindPair(int[] unsortedIntArray, int sum)
 	{
-		// Initializes array to hold the determined indices
-		int[] indices = new int[2];
+		// Initializes array to hold the determined indices, but assumes unfound to begin
+		int[] indices = new int[] {-1,-1};
 		// iterates through each elements
 		for(int i = 0; i < unsortedIntArray.length; i++) {
 			// Tests the current iteration against every other element in the array
@@ -47,9 +50,43 @@ public class FindPairWithSum {
 			}
 		}
 		// If no two elements were found to sum to the wanted sum return [-1,-1]
-		indices[0] = -1;
-		indices[1] = -1;
 		return indices;
 	}
 	
+	/**
+	 * Finds the first pair of two integers in an unsorted integer
+	 * array
+	 * 
+	 * Method:
+	 * Quick Sort, then iterates
+	 * 
+	 * @param sum, sum to find
+	 * @param unsortedIntArray, the unsorted int array to operate on
+	 * @return an int[] of the indices of the first pair that sums to
+	 * 		the given sum, OR returns [-1,-1] if not found
+	 */
+	public static int[] quickSortFindPair(int[] unsortedIntArray, int sum)
+	{
+		// Initializes array to hold the end result indices, assumes unfound to begin
+		int[] indices = new int[] {-1,-1};
+		// Uses quick sort algorithm to sort the array
+		int[] sortedArray = BubbleSort.bubbleSortIntArr(unsortedIntArray);
+		// Two indices to hold the place
+		int lower = 0;
+		int upper = sortedArray.length;
+		// Keep looking until lower is greater than upper, at such point there is no pair
+		while(lower < upper)
+		{
+			int res = sortedArray[lower] + sortedArray[upper];
+			if(res == sum) {
+				return new int[] {lower, upper};
+			}else if(res < sum) {
+				lower++;
+			}else if(res > sum) {
+				upper--;
+			}
+		}
+		return new int[] {-1,-1};
+		
+	}
 }
