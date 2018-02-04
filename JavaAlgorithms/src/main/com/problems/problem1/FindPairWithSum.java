@@ -1,7 +1,6 @@
 package main.com.problems.problem1;
 
-import main.com.algorithms.search.BubbleSort;
-import main.com.algorithms.search.QuickSort;
+import main.com.algorithms.sort.BubbleSort;
 
 /**
  * Finds a pair or pairs within an unsorted integer array that add up
