@@ -1,5 +1,7 @@
 package main.com.algorithms.primenumbers;
 
+import java.util.Random;
+
 /**
  * Generates Primes
  * 
@@ -73,11 +75,40 @@ public class PrimeGenerator {
 		return primes;
 	}
 	
+	/**
+	 * Gets a random prime from an ordered long array of primes of specified length
+	 * 
+	 * @param numberOfPrimesToPickFrom, length of the ordered prime array
+	 * @return a random prime between the first prime and the nth prime, where n is the
+	 * 		specified length
+	 * 		IF SPECIFIED LENGTH IS NOT >1 RETURNS -1
+	 */
+	public static long getARandomPrime(int numberOfPrimesToPickFrom)
+	{
+		if(numberOfPrimesToPickFrom >= 1) {
+			// Generates an ordered prime array of specified length
+			long[] primeArray = generateLongArray(numberOfPrimesToPickFrom);
+			
+			// Returns a random element from the generated array
+			return primeArray[(new Random()).nextInt(primeArray.length)];
+		}else {
+			// If specified length of prime array is not enough
+			return -1;
+		}
+	}
+	
+	/**
+	 * Demonstration 
+	 * 
+	 * @param args
+	 */
 	public static void main(String[] args)
 	{
 		for(long x : generateLongArray(100)){
 			System.out.println(x);
 		}
+		System.out.println("================");
+		System.out.println(getARandomPrime(100));
 	}
 
 }
