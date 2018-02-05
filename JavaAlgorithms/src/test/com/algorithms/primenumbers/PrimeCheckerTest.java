@@ -53,7 +53,7 @@ class PrimeCheckerTest {
 		long[] primesSecondToThousand = PrimeGenerator.generateLongArray(10000);
 		primesSecondToThousand[0] = 3;
 		for(long l : primesSecondToThousand) {
-			if(!PrimeChecker.isPrimeBasedOnLastDigit(l)) {
+			if(!PrimeChecker.isPrimeBruteForceFiltered(l)) {
 				fail(l +  " was falsely determined to be not prime");
 			}
 		}
@@ -63,25 +63,25 @@ class PrimeCheckerTest {
 	@Test
 	void lastDigitCheckTwo()
 	{
-		assertTrue(PrimeChecker.isPrimeBasedOnLastDigit(2));
+		assertTrue(PrimeChecker.isPrimeBruteForceFiltered(2));
 	}
 	
 	@Test
 	void lastDigitCheckOne()
 	{
-		assertFalse(PrimeChecker.isPrimeBasedOnLastDigit(1));
+		assertFalse(PrimeChecker.isPrimeBruteForceFiltered(1));
 	}
 	
 	@Test
 	void lastDigitCheckZero()
 	{
-		assertFalse(PrimeChecker.isPrimeBasedOnLastDigit(0));
+		assertFalse(PrimeChecker.isPrimeBruteForceFiltered(0));
 	}
 	
 	@Test
 	void lastDigitCheckNegOne()
 	{
-		assertFalse(PrimeChecker.isPrimeBasedOnLastDigit(-1));
+		assertFalse(PrimeChecker.isPrimeBruteForceFiltered(-1));
 	}
 
 }
