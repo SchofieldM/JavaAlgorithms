@@ -2,7 +2,7 @@ package main.com.algorithms.encryption;
 
 public class OffsetEncryption {
 
-	public static String encrypt(String toEncrypt, int offSet)
+	public static String offsetEncrypt(String toEncrypt, int offSet)
 	{
 		String encryptedString = "";
 		for(char c : toEncrypt.toCharArray()) {
@@ -11,7 +11,7 @@ public class OffsetEncryption {
 		return encryptedString;
 	}
 	
-	public static String decrypt(String toDecrypt, int offSet)
+	public static String offsetDecrypt(String toDecrypt, int offSet)
 	{
 		String encryptedString = "";
 		for(char c : toDecrypt.toCharArray()) {
@@ -20,13 +20,20 @@ public class OffsetEncryption {
 		return encryptedString;
 	}
 	
-	public static String progressiveEncryption()
+	public static String progressiveOffsetEncryption(String toEncrypt, int offSet)
+	{
+		String encryptedString = "";
+		char[] charArrayToEncrypt = toEncrypt.toCharArray();
+		for(int i = 0; i < charArrayToEncrypt.length; i++) {
+			encryptedString += (char) (charArrayToEncrypt[i] + i + offSet);
+		}
+		return encryptedString;
+	}
 	
 	public static void main(String[] args)
 	{
-		System.out.println(encrypt("Dog", 12));
-		System.out.println(decrypt("Eph", 1));
-		System.out.println(decrypt(encrypt("SuperSecure",10),10));
+		System.out.println(progressiveOffsetEncryption("aaa", 1));
+		System.out.println(progressiveOffsetEncryption("hiya", 0));
 	}
 	
 }
