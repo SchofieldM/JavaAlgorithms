@@ -2,20 +2,87 @@ package main.com.algorithms.encryption;
 
 public class XOREncryption {
 
-	public static String encrypt(String text, String key)
+	/**
+	 * Employs XOR encryption given a text string and a key
+	 * 
+	 * @param text, plain text
+	 * @param key, key to xor against the text
+	 * @return the cipher text
+	 */
+	public static String xorWithStringKey(String text, String key)
 	{
+		char[] textChars = text.toCharArray();
+		char[] keyChars = key.toCharArray();
+		String textBinary = "";
+		String keyBinary = "";
 		String output = "";
-        for(int i = 0; i < text.length(); i++) {
-            int o = (Integer.valueOf(text.charAt(i)) ^ Integer.valueOf(key.charAt(i % (key.length() - 1)))) + '0';
-            output += o;
+		for(char c : textChars) {
+			String textBin = Integer.toBinaryString(c); 
+			while(textBin.length() < 8) {
+				textBin = "0" + textBin;
+			}
+			textBinary += textBin;
+		}
+		for(char c : keyChars) {
+			String keyBin = Integer.toBinaryString(c);
+			while(keyBin.length() < 8)
+				keyBin = "0" + keyBin;
+			keyBinary += keyBin;
+		}
+		String charPrep = "";
+        for(int i = 0; i <= textBinary.length(); i++) {
+        	if(charPrep.length() % 8 == 0 && i != 0) {
+        		output += (char) Integer.parseInt(charPrep, 2);
+        		charPrep = "";
+        	}
+        	if(i == textBinary.length()){
+        		break;
+        	}
+        	charPrep += textBinary.charAt(i) ^ keyBinary.charAt(i%keyBinary.length());
+        }
+        return output; 
+	}
+	
+	/**
+	 * Employs XOR encryption given a text string and a key
+	 * 
+	 * @param text, plain text
+	 * @param key, key to xor against the text
+	 * @return the cipher text
+	 */
+	public static String xorWithBinaryKey(String text, String keyBinary)
+	{
+		char[] textChars = text.toCharArray();
+		String textBinary = "";
+		String output = "";
+		for(char c : textChars) {
+			String textBin = Integer.toBinaryString(c); 
+			while(textBin.length() < 8) {
+				textBin = "0" + textBin;
+			}
+			textBinary += textBin;
+		}
+		String charPrep = "";
+        for(int i = 0; i <= textBinary.length(); i++) {
+        	if(charPrep.length() % 8 == 0 && i != 0) {
+        		output += (char) Integer.parseInt(charPrep, 2);
+        		charPrep = "";
+        	}
+        	if(i == textBinary.length()){
+        		break;
+        	}
+        	charPrep += textBinary.charAt(i) ^ keyBinary.charAt(i%keyBinary.length());
         }
         return output; 
 	}
 	
 	public static void main(String[] args)
 	{
-		System.out.println(encrypt("Doggie", ""));
-		System.out.println(encrypt("Doggie", "aa"));
+		System.out.println(xorWithStringKey("SuperSecretText", "12345"));
+		System.out.println(xorWithStringKey(xorWithStringKey("SuperSecretText", "12345"), "12345"));
+		
+		System.out.println(xorWithBinaryKey("Password", "01010111"));
+		System.out.println(xorWithBinaryKey(xorWithBinaryKey("Password", "01010111"), "01010111"));
 	}
 	
 }
