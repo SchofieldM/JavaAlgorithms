@@ -44,7 +44,7 @@ public class XOREncryption {
 	}
 	
 	/**
-	 * Employs XOR encryption given a text string and a key
+	 * Employs XOR encryption given a text string and a binary key
 	 * 
 	 * @param text, plain text
 	 * @param key, key to xor against the text
@@ -76,6 +76,12 @@ public class XOREncryption {
         return output; 
 	}
 	
+	/**
+	 * Demonstration of xor encryption and decryption as an xor decryption is merely
+	 * applying another encryption with the same key
+	 * 
+	 * @param args
+	 */
 	public static void main(String[] args)
 	{
 		System.out.println(xorWithStringKey("SuperSecretText", "12345"));
