@@ -34,9 +34,9 @@ public class XORSwap {
 		 *  y = y XOR x
 		 *  x = x XOR y
 		 */
-		var1 = var1 ^ var2;
-		var2 = var2 ^ var1;
-		var1 = var1 ^ var2;
+		var1 ^= var2;
+		var2 ^= var1;
+		var1 ^= var2;
 		
 		// Shows that the variables were swapped
 		System.out.println("Swapped Values: var1 = " + var1 + " var2 = " + var2);
