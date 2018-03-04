@@ -1,8 +1,15 @@
 package main.com.algorithms.strings;
 
+/**
+ * Allows for Strings to be converted to binary
+ * 
+ * "a" = 01100001
+ * 
+ * @author Matthew Schofield
+ *
+ */
 public class toBinary {
 
-	
 	public static String toBinary(String string)
 	{
 		String textBinary = "";
@@ -18,7 +25,7 @@ public class toBinary {
 	
 	public static void main(String[] args)
 	{
-		System.out.println(toBinary("aaa"));
+		System.out.println(toBinary("a"));
 	}
 	
 }
