@@ -15,9 +15,9 @@ public class EvenOddCheckTricks {
 	 */
 	public static void main(String[] args)
 	{
-		System.out.println(String.format("Test of 6: %s", and1Trick(6)));
-		System.out.println(String.format("Test of 56723: %s", and1Trick(56723)));
-		System.out.println(String.format("Test of 367754: %s", and1Trick(367754)));		
+		System.out.println(String.format("Test of 6: %s", add1Trick(6)));
+		System.out.println(String.format("Test of 56723: %s", add1Trick(56723)));
+		System.out.println(String.format("Test of 367754: %s", add1Trick(367754)));		
 	}
 	
 	/**
@@ -27,7 +27,7 @@ public class EvenOddCheckTricks {
 	 * @param var, an int
 	 * @return if the int is even return "Even" else return "Odd"
 	 */
-	public static String and1Trick(int var)
+	public static String add1Trick(int var)
 	{
 		return (var & 1) == 0  ? "Even" : "Odd";
 	}
