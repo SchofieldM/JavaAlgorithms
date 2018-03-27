@@ -8,7 +8,7 @@ import java.util.Iterator;
 public class Node<E> implements Collection <E>{
 
 	private E mainObject;
-	private HashMap<E, HashSet<Integer>> paths; 
+	private HashMap<Node<E>, Integer> paths; 
 	
 	public Node(E mainObject)
 	{ 
