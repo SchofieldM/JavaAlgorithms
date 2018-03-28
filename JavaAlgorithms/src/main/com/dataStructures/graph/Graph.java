@@ -1,42 +1,32 @@
 package main.com.dataStructures.graph;
 
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
+import java.util.Set;
 
-public class Graph<E> implements Collection <E>{
+public class Graph<E> implements Collection <E>, Set<E>{
 
-	private HashSet<Node<E>> nodes; 
+	private HashMap<E, HashMap<E, Integer>> nodes; 
 	
 	public Graph()
 	{
-		nodes = new HashSet<Node<E>>();
+		nodes = new HashMap<E, HashMap<E, Integer>>();
 	}
-	
-	public boolean addPathToNode(Node<E> nodeToAddTo, Node<E> pathTo, int pathLength)
-	{
-		nodeToAddTo.addPath(pathTo, pathLength);
-		return true;
-	}
-	
-	@Override
-	public String toString()
-	{
-		String stringRepresentation = "";
-		for(Node node : nodes) {
-			stringRepresentation += node + "\n";
-		}
-		return stringRepresentation;
-	}
-	
+
 	@Override
 	public int size() {
-		return nodes.size();
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	@Override
 	public boolean isEmpty() {
-		return nodes.size() == 0;
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 	@Override
@@ -47,13 +37,13 @@ public class Graph<E> implements Collection <E>{
 
 	@Override
 	public Iterator<E> iterator() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return nodes.keySet().iterator();
 	}
 
 	@Override
 	public Object[] toArray() {
-		// TODO Auto-generated method stub
+		System.out.println("toArray()");
 		return null;
 	}
 
@@ -65,16 +55,10 @@ public class Graph<E> implements Collection <E>{
 
 	@Override
 	public boolean add(E e) {
-		nodes.add(new Node<E>(e));
-		return true;
+		nodes.put(e, new HashMap<E, Integer>());
+		return false;
 	}
 
-	public boolean add(Node<E> e)
-	{
-		nodes.add(e);
-		return true;
-	}
-	
 	@Override
 	public boolean remove(Object o) {
 		// TODO Auto-generated method stub
