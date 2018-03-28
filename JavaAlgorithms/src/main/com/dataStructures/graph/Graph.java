@@ -1,25 +1,42 @@
 package main.com.dataStructures.graph;
 
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Iterator;
 
 public class Graph<E> implements Collection <E>{
 
+	private HashSet<Node<E>> nodes; 
+	
 	public Graph()
 	{
-		
+		nodes = new HashSet<Node<E>>();
+	}
+	
+	public boolean addPathToNode(Node<E> nodeToAddTo, Node<E> pathTo, int pathLength)
+	{
+		nodeToAddTo.addPath(pathTo, pathLength);
+		return true;
+	}
+	
+	@Override
+	public String toString()
+	{
+		String stringRepresentation = "";
+		for(Node node : nodes) {
+			stringRepresentation += node + "\n";
+		}
+		return stringRepresentation;
 	}
 	
 	@Override
 	public int size() {
-		// TODO Auto-generated method stub
-		return 0;
+		return nodes.size();
 	}
 
 	@Override
 	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		return false;
+		return nodes.size() == 0;
 	}
 
 	@Override
@@ -48,10 +65,16 @@ public class Graph<E> implements Collection <E>{
 
 	@Override
 	public boolean add(E e) {
-		// TODO Auto-generated method stub
-		return false;
+		nodes.add(new Node<E>(e));
+		return true;
 	}
 
+	public boolean add(Node<E> e)
+	{
+		nodes.add(e);
+		return true;
+	}
+	
 	@Override
 	public boolean remove(Object o) {
 		// TODO Auto-generated method stub
