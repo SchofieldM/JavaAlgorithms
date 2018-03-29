@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.ListIterator;
 import java.util.Set;
 
-public class Graph<E> implements Collection <E>, Set<E>{
+public class Graph<E> implements  Set<E>{
 
 	private HashMap<E, HashMap<E, Integer>> nodes; 
 	
@@ -19,25 +19,21 @@ public class Graph<E> implements Collection <E>, Set<E>{
 
 	@Override
 	public int size() {
-		// TODO Auto-generated method stub
-		return 0;
+		return nodes.size();
 	}
 
 	@Override
 	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		return false;
+		return nodes.isEmpty();
 	}
 
 	@Override
 	public boolean contains(Object o) {
-		// TODO Auto-generated method stub
-		return false;
+		return nodes.containsKey(o);
 	}
 
 	@Override
 	public Iterator<E> iterator() {
-		
 		return nodes.keySet().iterator();
 	}
 
@@ -56,13 +52,13 @@ public class Graph<E> implements Collection <E>, Set<E>{
 	@Override
 	public boolean add(E e) {
 		nodes.put(e, new HashMap<E, Integer>());
-		return false;
+		return true;
 	}
 
 	@Override
 	public boolean remove(Object o) {
-		// TODO Auto-generated method stub
-		return false;
+		nodes.remove(o);
+		return true;
 	}
 
 	@Override
@@ -73,26 +69,28 @@ public class Graph<E> implements Collection <E>, Set<E>{
 
 	@Override
 	public boolean addAll(Collection<? extends E> c) {
-		// TODO Auto-generated method stub
-		return false;
+		for(E obj : c) {
+			add(obj);
+		}
+		return true;
 	}
 
 	@Override
 	public boolean removeAll(Collection<?> c) {
-		// TODO Auto-generated method stub
-		return false;
+		for(Object obj : c) {
+			remove(obj);
+		}
+		return true;
 	}
 
 	@Override
 	public boolean retainAll(Collection<?> c) {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
 	public void clear() {
-		// TODO Auto-generated method stub
-		
+		nodes.clear();
 	}
 }
 
