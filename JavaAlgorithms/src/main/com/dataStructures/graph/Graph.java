@@ -17,6 +17,33 @@ public class Graph<E> implements  Set<E>{
 		nodes = new HashMap<E, HashMap<E, Integer>>();
 	}
 
+	public void addDirectedPath(E nodeFrom, E nodeTo, Integer distance)
+	{
+		nodes.get(nodeFrom).put(nodeTo, distance);
+	}
+	
+	public void addPath(E node1, E node2, Integer distance)
+	{
+		nodes.get(node1).put(node2, distance);
+		nodes.get(node2).put(node1, distance);
+	}
+	
+	@Override
+	public String toString()
+	{
+		String output = "";
+		for(E node : nodes.keySet()) 
+		{
+			output += node + " | ";
+			for(E nodeTo : nodes.get(node).keySet())
+			{
+				output += nodeTo + " : " + nodes.get(node).get(nodeTo) + " ";
+			}
+			output += '\n';
+		}
+		return output;
+	}
+	
 	@Override
 	public int size() {
 		return nodes.size();
