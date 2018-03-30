@@ -1,5 +1,7 @@
 package main.com.algorithms.encryption;
 
+import java.util.ArrayList;
+
 public class XOREncryption {
 
 	/**
@@ -84,8 +86,8 @@ public class XOREncryption {
 	 */
 	public static void main(String[] args)
 	{
-		System.out.println(xorWithStringKey("SuperSecretText", "12345"));
-		System.out.println(xorWithStringKey(xorWithStringKey("SuperSecretText", "12345"), "12345"));
+		System.out.println(xorWithStringKey("SuperSecretText", "secretpassword"));
+		System.out.println(xorWithStringKey(xorWithStringKey("SuperSecretText", "secretpassword"), "secretpassword"));
 		
 		System.out.println(xorWithBinaryKey("Password", "01010111"));
 		System.out.println(xorWithBinaryKey(xorWithBinaryKey("Password", "01010111"), "01010111"));
