@@ -28,6 +28,17 @@ public class Graph<E> implements  Set<E>{
 		nodes.get(node2).put(node1, distance);
 	}
 	
+	public void removePath(E nodeFrom, E nodeTo)
+	{
+		nodes.get(nodeFrom).remove(nodeTo);
+	}
+	
+	public void removeDirectedPath(E node1, E node2)
+	{
+		nodes.get(node1).remove(node2);
+		nodes.get(node2).remove(node1);
+	}
+	
 	@Override
 	public String toString()
 	{
@@ -83,8 +94,18 @@ public class Graph<E> implements  Set<E>{
 	}
 
 	@Override
-	public boolean remove(Object o) {
-		nodes.remove(o);
+	public boolean remove(Object nodeToRemove) {
+		nodes.remove(nodeToRemove);
+		for(E node : nodes.keySet())
+		{
+			for(E connectedNode : nodes.get(node).keySet())
+			{
+				if(connectedNode == nodeToRemove)
+				{
+					nodes.get(node).remove(connectedNode);
+				}
+			}
+		}
 		return true;
 	}
 
