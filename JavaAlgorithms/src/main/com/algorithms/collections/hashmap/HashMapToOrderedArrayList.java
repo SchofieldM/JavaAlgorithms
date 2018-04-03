@@ -5,21 +5,44 @@ import java.util.HashMap;
 
 public class HashMapToOrderedArrayList {
 
-	public ArrayList<Object> toOrderedArrayList(HashMap<Object, Integer> map)
+	public static ArrayList<Object> toOrderedArrayList(HashMap<Object, Double> map)
 	{
 		ArrayList<Object> arrayList = new ArrayList<>();
+		
 		for(Object obj : map.keySet()) {
-			if(arrayList.size() == 0)
+			if(arrayList.size() == 0) {
 				arrayList.add(obj);
-			for(int i = 0; i < map.size(); i++) {
-				if(i+1 == arrayList.size()) {
-					arrayList.add(obj);
-					break;
+				System.out.println(arrayList);
+			}else {
+				for(int i = 0; i < arrayList.size(); i++) {
+					System.out.println(arrayList);
+					
+					if(map.get(obj) < map.get(arrayList.get(i))) {
+						arrayList.add(i, obj);
+						break;
+					}
+					
+					if(i == arrayList.size()-1) {
+						arrayList.add(obj);
+						break;
+					}
 				}
-				if()
 			}
 		}
+	
 		return arrayList;
+	}
+	
+	public static void main(String[] args)
+	{
+		HashMap<Object, Double> toSort = new HashMap<>();
+		toSort.put("D", 1.5);
+		toSort.put("E", 4.0);
+		toSort.put("A", 0.0);
+		toSort.put("B", 1.0);
+		toSort.put("C", 2.0);
+		System.out.println(toOrderedArrayList(toSort));
+	
 	}
 	
 }
