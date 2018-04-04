@@ -16,7 +16,6 @@ public class Obfuscation {
 				char temp = binaryInputArr[i-1];
 				binaryInputArr[i-1] = binaryInputArr[i];
 				binaryInputArr[i] = temp;
-				System.out.println("Flip");
 			}
 		}
 		return BinaryToString.binaryToString8Bit(new String(binaryInputArr));
@@ -24,7 +23,7 @@ public class Obfuscation {
 	
 	public static void main(String[] args)
 	{
-		System.out.println(flipBits("aaa", 12));
+		System.out.println(flipBits("abcdefghi", 3));
 
 	}
 	
